@@ -1,4 +1,4 @@
-/**
+/**         原地移除重复数字
  * @param {number[]} nums
  * @return {number}
  */
@@ -17,7 +17,7 @@
 };
 
 
-/**
+/**     括号判别
  * @param {string} s
  * @return {boolean}
  */
@@ -57,7 +57,7 @@
 };
 
 
-/**
+/**     合并有序链表
  * Definition for singly-linked list.
  * function ListNode(val, next) {
  *     this.val = (val===undefined ? 0 : val)
@@ -88,11 +88,41 @@
 };
 
 
-/**
+/**     原地去掉指定 数字
  * @param {number[]} nums
  * @param {number} val
  * @return {number}
  */
  var removeElement = function(nums, val) {
-    return nums.filter(x=>x!=val).length
+    let i = 0;
+    for(let j=0; j < nums.length; j ++) {
+        if(nums[j] != val) {
+            nums[i++] = nums[j];
+        }
+    }
+    return i
+};
+
+
+// 插入目标值 时间复杂度 O（log n）
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+ var searchInsert = function(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+    let mid = 0;
+    while(left <= right) {
+        mid = Math.round((left + right) / 2);
+        if(nums[mid] < target) {
+            left = mid +1;
+        } else if (nums[mid] > target) {
+            right = mid;
+        } else {
+            return mid
+        }
+    }
+    return -1
 };
