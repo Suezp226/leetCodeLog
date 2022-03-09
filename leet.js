@@ -120,9 +120,29 @@
             left = mid +1;
         } else if (nums[mid] > target) {
             right = mid;
-        } else {
+        } else { 
             return mid
         }
     }
     return -1
 };
+
+
+
+/**
+ * 防抖 (闭包)
+ * 
+ */
+
+function debounce(fn,delay) {
+
+    let timer = null;
+
+    return function() {
+        if(timer) {
+            clearInterval(timer)
+        }
+        setTimeout(fn, delay);
+    }
+}
+
